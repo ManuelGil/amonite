@@ -7,7 +7,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 Amonite builds upon Debian rather than replacing it.
 
-The project intentionally limits the number of engineering decisions it owns while relying on the platform whenever appropriate. This architecture exists to make those decisions understandable, maintainable and replaceable throughout the lifetime of the project.
+The project intentionally limits the number of engineering decisions it owns
+while relying on the platform whenever appropriate. This architecture makes
+those decisions understandable, maintainable and replaceable throughout the
+project's lifetime.
 
 > **Every default is an intentional decision.**
 
@@ -45,7 +48,9 @@ Whenever Debian already provides a mature capability, the platform should normal
 
 ## Engineering Decisions
 
-An engineering decision is any capability whose long-term evolution becomes the responsibility of Amonite rather than the underlying platform.
+An engineering decision is any capability whose long-term evolution becomes
+Amonite's responsibility rather than the responsibility of the underlying
+platform.
 
 Engineering decisions define the default system.
 
@@ -70,7 +75,7 @@ Current foundational decisions include:
 - Python as the default automation and integration runtime.
 - Local language model inference through `llama.cpp`.
 
-These technologies form part of the identity of the default system.
+These technologies form part of the default system's identity.
 
 Changing them requires reconsidering the architectural direction of the project rather than selecting a different implementation.
 

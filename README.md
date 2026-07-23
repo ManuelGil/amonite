@@ -18,7 +18,7 @@ The project is guided by a simple principle:
 
 Modern operating systems naturally accumulate software, services, integrations and automation over time.
 
-Although each addition may solve a specific problem, the overall result is often increased complexity, higher maintenance cost and systems that become progressively harder to understand, adapt and maintain.
+Although each addition may solve a specific problem, the overall result is often increased complexity, higher maintenance costs and systems that become progressively harder to understand, adapt and maintain.
 
 Amonite follows a different approach.
 
@@ -26,7 +26,7 @@ Instead of asking what else should be added, the project first asks:
 
 > **Why should this exist by default?**
 
-Every default should provide a clear capability, justify its existence and continue providing value throughout the lifetime of the system.
+Every default should provide a clear capability, justify its existence and continue to provide value throughout the system's lifetime.
 
 The objective is not to build a different Linux.
 
@@ -56,7 +56,7 @@ Privacy should improve through reducing unnecessary exposure rather than restric
 
 ### Lightweight
 
-Lightweight refers to engineering cost rather than package count.
+In this context, lightweight refers to engineering cost rather than package count.
 
 Capabilities should be implemented with the lowest practical cost in terms of dependencies, maintenance and coupling.
 
@@ -74,7 +74,7 @@ Some decisions represent foundational technologies maintained by the project.
 
 Others define capabilities whose implementations may evolve as better solutions become available.
 
-Current protected decisions include:
+Current protected decisions are:
 
 - Python as the default automation and integration runtime.
 - Local language model inference.
