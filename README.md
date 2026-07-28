@@ -130,10 +130,12 @@ The website is the public source of truth for product information, capabilities,
 
 This repository documents the public engineering decisions that define Amonite.
 
+See [CHANGELOG.md](CHANGELOG.md) for the project's public release history.
+
 ## License
 
 Amonite is free software released under the GNU General Public License v3.0 or later.
 
-See `LICENSE` for the complete license text.
+See [LICENSE](LICENSE) for the complete license text.
 
 Third-party software retains its respective licenses.

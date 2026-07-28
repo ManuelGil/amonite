@@ -70,7 +70,7 @@ an issue.
 Useful resources include:
 
 - the official documentation;
-- the release notes;
+- the changelog;
 - the project issue tracker;
 - the community support channels.
 
@@ -89,4 +89,4 @@ The following documents complement this guide:
 
 - `INSTALL.md` — Installing the Amonite GNU/Linux distribution.
 - `VERIFY.md` — Verifying downloaded installation images.
-- Release notes — Version-specific changes and known issues.
+- [`CHANGELOG.md`](CHANGELOG.md) — Public release history.

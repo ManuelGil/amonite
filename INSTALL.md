@@ -111,7 +111,7 @@ If the installer cannot start or the installation fails:
 
 - recreate the installation media;
 - confirm that the target hardware satisfies the minimum requirements;
-- review the release notes for known issues.
+- review the changelog for release-specific information.
 
 If the problem persists, report it through the project's official issue
 tracker.
@@ -133,4 +133,4 @@ The following documents complement this guide:
 
 - `VERIFY.md` — Verify downloaded installation images.
 - `FIRST_STEPS.md` — Getting started after installation.
-- Release notes — Version-specific changes and known issues.
+- [`CHANGELOG.md`](CHANGELOG.md) — Public release history.
