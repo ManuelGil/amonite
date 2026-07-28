@@ -7,6 +7,13 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+## [v1.0.0-alpha.2] - 2026-07-28
+
+### Changed
+
+- Refined the Amonite Standard desktop experience and completed the intended
+  product experience for this stage of the alpha series.
+
 ## [lite/v1.0.0-alpha] - 2026-07-28
 
 ### Added
