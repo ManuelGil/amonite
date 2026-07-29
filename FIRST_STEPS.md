@@ -64,15 +64,16 @@ edition.
 
 ## Getting Help
 
-If you need assistance, consult the available documentation before reporting
-an issue.
+If you need assistance, consult the available documentation first.
 
 Useful resources include:
 
 - the official documentation;
 - the changelog;
-- the project issue tracker;
-- the community support channels.
+- the official community on [r/Amonite](https://reddit.com/r/amonite).
+
+The official Amonite community is hosted on Reddit. Questions, bug reports,
+feature ideas and general discussion are welcome in **r/Amonite**.
 
 ## Security Recommendations
 

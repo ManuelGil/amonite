@@ -113,8 +113,8 @@ If the installer cannot start or the installation fails:
 - confirm that the target hardware satisfies the minimum requirements;
 - review the changelog for release-specific information.
 
-If the problem persists, report it through the project's official issue
-tracker.
+If the problem persists, share it in the official community on
+[r/Amonite](https://reddit.com/r/amonite).
 
 ## Supported Platforms
 

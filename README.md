@@ -123,8 +123,9 @@ Amonite is not:
 | --------------- | ------------------------------------------------ |
 | Website         | Product information, documentation and downloads |
 | GitHub Releases | Official releases                                |
-| GitHub Issues   | Bug reports and feature requests                 |
-| Community       | r/amonite                                        |
+| Community       | [r/Amonite](https://reddit.com/r/amonite)        |
+
+The official Amonite community is hosted on Reddit. Questions, bug reports, feature ideas and general discussion are welcome in **r/Amonite**.
 
 The website is the public source of truth for product information, capabilities, release information and community resources.
 
