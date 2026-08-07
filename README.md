@@ -14,7 +14,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 </p>
 
 <p align="center">
-  <a href="https://img.shields.io/github/downloads/ManuelGil/amonite/total"><img src="https://img.shields.io/github/downloads/ManuelGil/amonite/total" alt="GitHub Downloads"></a>
+  <a href="https://github.com/ManuelGil/amonite/releases"><img src="https://img.shields.io/github/downloads/ManuelGil/amonite/total" alt="GitHub Downloads"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg" alt="License"></a>
   <a href="https://amonite.org/"><img src="https://img.shields.io/badge/website-amonite.org-0A7A5A.svg" alt="Website"></a>
 </p>
@@ -23,186 +23,104 @@ Amonite is an independent GNU/Linux operating system built on Debian. It is engi
 
 Debian provides the platform. Amonite provides a carefully considered set of defaults.
 
-The project is guided by a simple principle:
-
 > **Every default is an intentional decision.**
 
 Software earns its place by enabling work. Transitive convenience is not enough.
 
 ## Why Amonite exists
 
-Modern operating systems accumulate software, services, integrations, and automation over time.
-
-Each addition may solve a specific problem. The result is often higher complexity, higher maintenance cost, and systems that become harder to understand, adapt, and maintain.
+Operating systems accumulate. Software, services, integrations, and automation arrive one reasonable decision at a time, and the result is a system harder to understand, adapt, and maintain than any of those decisions suggested.
 
 Amonite asks a different first question:
 
 > **Why should this exist by default?**
 
-Every default should provide a clear capability, justify its existence, and remain useful throughout the system's lifetime.
+A default has to provide a clear capability, justify its presence, and stay useful for the life of the system.
+
+Two rules follow from that one. Anything useful on day one must not become a trap on day thirty. And the person at the keyboard remains in control: defaults are starting points, and replacing one should never mean fighting the system.
+
+Security follows the same reasoning: Debian's mature mechanisms come before additional software, and privacy means reducing unnecessary exposure without removing the user's choice. Lightweight means the lowest practical cost in dependencies, maintenance, and coupling - not the lowest package count for its own sake.
 
 The goal is not to invent a new kind of Linux. The goal is to let Linux remain Linux, and remain yours.
 
 ## Who it is for
 
-Amonite is intended for people who want:
+People who want a coherent day-one desktop without assembling it by hand: development and administration tools ready from the first session, local model inference that does not depend on an external service, and a Debian base that stays understandable and replaceable.
 
-- a coherent day-one desktop without assembling the system by hand;
-- a Debian-based platform that remains understandable and replaceable;
-- development and administration tools ready from the first session;
-- local model inference without depending on external AI services;
-- deliberate defaults rather than software accumulation.
+Published editions are **alpha** within the **Nautilus** (1.x) release family. They are meant for evaluation and testing. If you need a production-supported release or guaranteed hardware compatibility, wait. Pre-release images may contain bugs, incomplete features, and compatibility problems.
 
-## Who should not use it yet
+## What Amonite provides
 
-Current public editions are **alpha** within the **Nautilus** (1.x) release family.
+Published Alpha editions intentionally provide:
 
-They are intended for evaluation and testing.
+- a desktop experience matching the chosen edition;
+- guided installation, with optional encryption;
+- a live session for evaluation before any installed disk is modified;
+- a curated command-line environment for development and administration;
+- local AI inference under user control, without depending on external inference services.
 
-Do not use current alpha releases as a production operating system if you require:
+These are product commitments, not a catalogue of every application or desktop convenience in a release. Local AI is one deliberate capability among others - Amonite does not claim to be an "AI operating system", the fastest system, or the most secure system.
 
-- a stable, production-supported release;
-- guaranteed compatibility across all hardware;
-- Mobile as an installable product (it is experimental and has no public ISO).
-
-Pre-release versions may contain bugs, incomplete features, or compatibility issues.
-
-## Core philosophy
-
-Amonite follows three rules for what may ship:
-
-1. **Capability over accretion** - software earns its place by enabling work.
-2. **Replaceability** - useful on day one must not become a trap on day thirty.
-3. **User ownership** - the person at the keyboard remains in control.
-
-Amonite does not claim to be the fastest system, the most secure system, or an "AI operating system". Local AI is one deliberate capability among others.
-
-## Design principles
-
-Every engineering decision should reinforce one or more of the following principles.
-
-| Principle   | Meaning                                                                                                                                              |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Efficiency  | Include only capabilities that provide lasting value. Temporary installation requirements should not become permanent parts of the installed system. |
-| Security    | Build upon Debian's mature security mechanisms before introducing additional software.                                                               |
-| Privacy     | Reduce unnecessary exposure while preserving user choice.                                                                                            |
-| Lightweight | Prefer the lowest practical cost in dependencies, maintenance, and coupling, not the lowest package count for its own sake.                          |
-| Simplicity  | Maintain a coherent system where every decision can be technically justified. Complexity should never become a feature.                              |
-
-## Project goals
-
-- Provide a curated Debian-based desktop that is ready for real work on day one.
-- Keep engineering decisions few, explicit, and replaceable whenever practical.
-- Prefer platform integration over project-specific infrastructure.
-- Preserve maintainability as Debian evolves.
-- Ship cryptographically signed release artifacts that users can independently verify.
-
-## Project status
-
-| Item                                  | Status                                        |
-| ------------------------------------- | --------------------------------------------- |
-| Release family                        | **Nautilus** (Amonite 1.x)                    |
-| Standard                              | Alpha 2 - `1.0.0-alpha.2` (reference edition) |
-| Lite                                  | Alpha - `1.0.0-alpha`                         |
-| Mobile                                | Experimental - no public ISO                  |
-| Typical hardware (published editions) | `amd64` personal computers                    |
-
-See [branding.md](branding.md) for naming and maturity labels, and [CHANGELOG.md](CHANGELOG.md) for version history.
-
-## Architecture
-
-Amonite builds upon Debian rather than replacing it. There is one architecture for Amonite. Editions inherit it. Implementation may change without changing product identity.
-
-Full detail: [ARCHITECTURE.md](ARCHITECTURE.md).
+More detail: [CAPABILITIES.md](CAPABILITIES.md).
 
 ## Editions
 
-Amonite is one operating system with multiple editions. Editions differ by intended experience and maturity, not by philosophy or architecture.
+Amonite is one operating system with multiple editions. They differ in intended experience and maturity, not in philosophy or architecture.
 
 | Edition      | Identity                                            | Maturity                                                                                       |
 | ------------ | --------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | **Standard** | A complete general-purpose desktop operating system | Alpha 2 - [`1.0.0-alpha.2`](https://github.com/ManuelGil/amonite/releases/tag/v1.0.0-alpha.2)  |
 | **Lite**     | A lightweight desktop operating system              | Alpha - [`1.0.0-alpha`](https://github.com/ManuelGil/amonite/releases/tag/lite%2Fv1.0.0-alpha) |
-| **Mobile**   | An experimental exploration of mobile computing     | Experimental - no public download                                                              |
+| **Mobile**   | An experimental exploration of mobile computing     | Experimental - no public ISO                                                                   |
 
-Standard is currently the reference edition. Lite is currently Alpha. Mobile remains experimental.
+Standard is the reference edition. Published images target `amd64` personal computers.
 
-These statements describe present maturity only.
+Edition details: [EDITIONS.md](EDITIONS.md). Naming and maturity labels: [BRANDING.md](BRANDING.md).
 
-Edition details: [EDITIONS.md](EDITIONS.md).
+## Architecture
 
-## What Amonite intentionally provides
+Amonite builds upon Debian rather than replacing it. There is one architecture and every edition inherits it. Product identity and architecture are meant to stay stable while implementations evolve underneath them.
 
-Published Alpha editions intentionally provide:
-
-- a desktop experience matching the chosen edition;
-- secure, guided installation, with optional encryption;
-- live evaluation before disks are modified;
-- a curated command-line environment for development and administration;
-- local AI inference under user control, without depending on external inference services.
-
-These are product commitments. They are not a catalogue of every application or desktop convenience included in a release.
-
-More detail: [CAPABILITIES.md](CAPABILITIES.md).
+Full detail: [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Installation
 
-1. Download a published Alpha ISO (Standard or Lite) from [GitHub Releases](https://github.com/ManuelGil/amonite/releases) or [amonite.org/downloads](https://amonite.org/downloads/).
-2. Verify the image with OpenPGP signatures and SHA-256 checksums - [VERIFY.md](VERIFY.md).
+1. Download a published Alpha ISO from [GitHub Releases](https://github.com/ManuelGil/amonite/releases) or [amonite.org/downloads](https://amonite.org/downloads/).
+2. Verify the image against its OpenPGP signature and SHA-256 checksum - [VERIFY.md](VERIFY.md).
 3. Write the image to a USB flash drive and boot it.
 4. Install with the graphical installer - [INSTALL.md](INSTALL.md).
 5. After first login, continue with [FIRST_STEPS.md](FIRST_STEPS.md).
 
-Minimum practical expectations for published Alpha releases:
-
-- 64-bit x86 (`amd64`) hardware;
-- BIOS or UEFI firmware;
-- enough RAM and storage for a Debian desktop install (see [INSTALL.md](INSTALL.md)).
+Every release artifact is cryptographically signed so that it can be verified independently. You need 64-bit x86 (`amd64`) hardware, BIOS or UEFI firmware, and enough RAM and storage for a Debian desktop install; [INSTALL.md](INSTALL.md) gives the validated reference configuration.
 
 ## Documentation map
 
-| Document                           | Layer        | Purpose                                    |
-| ---------------------------------- | ------------ | ------------------------------------------ |
-| [README.md](README.md)             | Product      | Landing page                               |
-| [EDITIONS.md](EDITIONS.md)         | Product      | Edition identity and public status         |
-| [CAPABILITIES.md](CAPABILITIES.md) | Product      | Product-defining capabilities              |
-| [branding.md](branding.md)         | Product      | Naming, versioning, Nautilus               |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | Architecture | Shared architecture and decision hierarchy |
-| [INSTALL.md](INSTALL.md)           | User guide   | Installing the published release           |
-| [VERIFY.md](VERIFY.md)             | User guide   | Verifying release authenticity             |
-| [FIRST_STEPS.md](FIRST_STEPS.md)   | User guide   | After first login                          |
-| [CHANGELOG.md](CHANGELOG.md)       | History      | Version history                            |
-| [SECURITY](SECURITY)               | Policy       | Security policy                            |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | Process      | How to contribute                          |
-| [security/](security/)             | Trust        | Release signing key                        |
+| Document                           | Purpose                                    |
+| ---------------------------------- | ------------------------------------------ |
+| [EDITIONS.md](EDITIONS.md)         | Edition identity and public status         |
+| [CAPABILITIES.md](CAPABILITIES.md) | Product-defining capabilities              |
+| [BRANDING.md](BRANDING.md)         | Naming, versioning, Nautilus               |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | Shared architecture and decision hierarchy |
+| [INSTALL.md](INSTALL.md)           | Installing the published release           |
+| [VERIFY.md](VERIFY.md)             | Verifying release authenticity             |
+| [FIRST_STEPS.md](FIRST_STEPS.md)   | After first login                          |
+| [CHANGELOG.md](CHANGELOG.md)       | Version history                            |
+| [SECURITY](SECURITY)               | Security policy                            |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute                          |
+| [security/](security/)             | Release signing key                        |
 
-## Development status
-
-Amonite is designed, built, tested, cryptographically signed, and maintained by Manuel Gil as an independent project.
-
-Nautilus is the 1.x release family. Current published editions include Standard at Alpha 2 and Lite at Alpha. Mobile remains experimental.
-
-Product identity and architecture should remain stable while implementations evolve. Documentation records present maturity; it does not predict future releases.
+Documentation records present maturity. It does not predict future releases.
 
 ## Community
 
-| Channel                                                          | Purpose                                                           |
-| ---------------------------------------------------------------- | ----------------------------------------------------------------- |
-| [r/Amonite](https://www.reddit.com/r/amonite/)                   | Questions, feedback, bug reports, and discussion                  |
-| [GitHub Releases](https://github.com/ManuelGil/amonite/releases) | Official published ISOs, checksums, signatures, and release notes |
-| [GitHub Sponsors](https://github.com/sponsors/ManuelGil)         | Optional sponsorship for development and infrastructure           |
-| [amonite.org](https://amonite.org/)                              | Product site, gallery, downloads, and project pages               |
+Questions, feedback, bug reports, and general discussion belong on [r/Amonite](https://www.reddit.com/r/amonite/). Official ISOs, checksums, signatures, and release notes are published through [GitHub Releases](https://github.com/ManuelGil/amonite/releases), and [amonite.org](https://amonite.org/) hosts downloads, the gallery, and project pages.
 
 ## Contributing
 
-Feedback from real installs of published Alpha editions is the most useful contribution at this stage.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+Amonite is designed, built, tested, cryptographically signed, and maintained by Manuel Gil as an independent project. Feedback from real installs is the most useful contribution - see [CONTRIBUTING.md](CONTRIBUTING.md). Optional sponsorship goes through [GitHub Sponsors](https://github.com/sponsors/ManuelGil).
 
 ## License
 
-Amonite is free software released under the GNU General Public License v3.0 or later.
-
-See [LICENSE](LICENSE) for the complete license text.
+Amonite is free software released under the GNU General Public License v3.0 or later. See [LICENSE](LICENSE) for the complete text.
 
 Third-party software retains its respective licenses.

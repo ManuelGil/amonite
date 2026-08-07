@@ -7,27 +7,23 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 Security is a fundamental engineering principle of Amonite.
 
-The project improves security through deliberate engineering decisions, careful system integration, and sensible defaults built upon the Debian platform, instead of relying primarily on additional security software.
+The project improves security through deliberate engineering decisions, careful system integration, and sensible defaults built upon the Debian platform, rather than by relying primarily on additional security software.
 
 > **Every default is an intentional decision.**
 
 ## Supported releases
 
-Security fixes are provided only for releases that are currently supported by the project.
+Security fixes are provided only for releases the project supports.
 
 | Release family | Published editions                           | Support posture             |
 | -------------- | -------------------------------------------- | --------------------------- |
 | Nautilus (1.x) | Standard `1.0.0-alpha.2`, Lite `1.0.0-alpha` | Evaluation and testing only |
 
-Pre-release versions may contain known issues and should not be considered suitable for production environments.
-
-Mobile is experimental and has no public release in the current documentation model.
-
-Support status for each published release is recorded here as that status exists.
+Pre-release versions may contain known issues and are not suitable for production environments. Mobile is experimental and has no public release.
 
 ## Default security posture
 
-Current published Alpha editions include:
+Published Alpha editions include:
 
 - mandatory access control enabled by default;
 - optional encrypted installation through the graphical installer;
@@ -45,7 +41,7 @@ Fingerprint:
 
 ## Reporting a vulnerability
 
-If you believe you have discovered a security vulnerability in Amonite, report it responsibly.
+If you believe you have found a security vulnerability in Amonite, report it responsibly.
 
 Preferred contact:
 
@@ -53,7 +49,7 @@ Preferred contact:
 security@amonite.org
 ```
 
-You may also use the project's official communication channels listed at [https://amonite.org](https://amonite.org/).
+The official communication channels listed at [amonite.org](https://amonite.org/) also work.
 
 Please include:
 
@@ -63,45 +59,27 @@ Please include:
 - expected and observed behaviour;
 - any relevant logs or technical information.
 
-Please avoid publicly disclosing vulnerabilities until they have been evaluated.
-
-Do not report security vulnerabilities through public issue trackers or the public subreddit when a private channel is available.
+Do not report vulnerabilities through public issue trackers or the public subreddit while a private channel is available, and please avoid public disclosure until the report has been evaluated.
 
 ## Security principles
 
-### Platform first
+**Platform first.** Whenever practical, Amonite builds upon Debian's mature security mechanisms before introducing project-specific solutions.
 
-Whenever practical, Amonite builds upon Debian's mature security mechanisms before introducing project-specific solutions.
+**Least complexity.** Reducing unnecessary software, services, and custom infrastructure improves auditability and lowers long-term maintenance.
 
-### Least complexity
+**Transparency.** Security mechanisms should remain understandable. Users should be able to inspect, configure, and reason about the behaviour of their systems.
 
-Reducing unnecessary software, services, and custom infrastructure generally improves auditability and reduces long-term maintenance.
-
-### Transparency
-
-Security mechanisms should remain understandable.
-
-Users should be able to inspect, configure, and reason about the behaviour of their systems.
-
-### Continuous evaluation
-
-Security decisions are periodically reviewed as Debian and related upstream software evolve.
-
-Better approaches may replace existing implementations whenever they provide measurable improvements while remaining consistent with the project's engineering principles.
+**Continuous evaluation.** Security decisions are reviewed as Debian and related upstream software evolve. Better approaches may replace existing implementations whenever they offer measurable improvements and remain consistent with the project's engineering principles.
 
 ## Scope
 
-Amonite is responsible for the engineering decisions introduced by the project.
+Amonite is responsible for the engineering decisions the project introduces.
 
-Security issues originating in upstream software, Debian packages, or third-party components are generally addressed through their respective maintainers, although the project may provide updated releases when appropriate.
+Security issues originating in upstream software, Debian packages, or third-party components are addressed through their respective maintainers, though the project may publish updated releases when appropriate.
 
 ## Disclosure
 
-The project follows a coordinated disclosure process whenever practical.
-
-Reported vulnerabilities are evaluated, reproduced when possible, and addressed according to their impact on supported releases.
-
-Security-related changes are documented in the corresponding release notes whenever appropriate.
+The project follows a coordinated disclosure process whenever practical. Reported vulnerabilities are evaluated, reproduced where possible, and addressed according to their impact on supported releases. Security-related changes are documented in the corresponding release notes.
 
 ## Related documentation
 

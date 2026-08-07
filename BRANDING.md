@@ -5,7 +5,7 @@ SPDX-FileCopyrightText: 2026 Manuel Gil
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-Canonical branding and release-naming reference for Amonite. Branding belongs to **Amonite**, not to an edition. All editions share this philosophy.
+Canonical branding and release-naming reference for Amonite. Branding belongs to **Amonite**, not to an edition. All editions share it.
 
 ## Identity
 
@@ -17,42 +17,15 @@ Project logo: [assets/logo.png](assets/logo.png)
 
 ## Versioning
 
-Amonite uses [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), with optional pre-release labels when a release needs them.
+Amonite uses [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`), with pre-release labels where a release needs them. The SemVer number is the authoritative version identifier for packaging, scripting, and comparison.
 
-The SemVer number is the authoritative version identifier for packaging, scripting, and comparison.
-
-Version numbers and pre-release labels exist only when a release requires them. They are not a fixed numbering policy and do not imply further numbered releases.
-
-Examples of forms that may appear:
-
-- `1.0.0-experimental`
-- `1.0.0-alpha`
-- `1.0.0-alpha.2`
-- `1.0.0-beta`
-- `1.0.0-rc`
-- `1.0.0`
-
-These are illustrations, not a required sequence.
-
-`1.0.0-alpha.2` does not imply `1.0.0-alpha.3`.
-
-The presence of Alpha does not imply Beta, Release Candidate, or Stable.
+Forms that may appear include `1.0.0-experimental`, `1.0.0-alpha`, `1.0.0-alpha.2`, `1.0.0-beta`, `1.0.0-rc`, and `1.0.0`. These are illustrations, not a fixed numbering policy and not a required sequence. `1.0.0-alpha.2` does not imply `1.0.0-alpha.3`, and the presence of Alpha does not imply Beta, Release Candidate, or Stable.
 
 ## Maturity labels
 
-Maturity labels describe the **current state** of an edition or release.
+A maturity label describes the **current state** of an edition or release. Labels include, but are not limited to, Experimental, Alpha, Beta, Release Candidate, and Stable.
 
-Possible labels include, but are not limited to:
-
-- Experimental
-- Alpha
-- Beta
-- Release Candidate
-- Stable
-
-These labels are observations, not mandatory milestones. They do not define a required lifecycle. They do not require every edition to reach every label.
-
-Each edition evolves independently. An edition may remain at one maturity indefinitely, skip labels, or publish an additional numbered pre-release only when the project state justifies it.
+They are observations rather than mandatory milestones, and they do not define a lifecycle every edition must follow. Each edition evolves independently: an edition may remain at one maturity indefinitely, skip labels, or publish an additional numbered pre-release only when the project state justifies it.
 
 Documentation records present maturity. It does not predict future releases.
 
@@ -60,19 +33,11 @@ Documentation records present maturity. It does not predict future releases.
 
 **Nautilus** is the codename for the complete Amonite **1.x** generation. Every release belonging to the 1.x series belongs to Nautilus, regardless of that release's maturity label.
 
-Nautilus names the generation. Maturity labels name the current state of a given edition or version within that generation.
-
-| Concept                    | Meaning                                                  |
-| -------------------------- | -------------------------------------------------------- |
-| Nautilus                   | Codename of the Amonite 1.x family                       |
-| `1.0.0-alpha.2`            | A specific version that currently exists within Nautilus |
-| Alpha / Beta / RC / Stable | Possible maturity labels - not a required path           |
+Nautilus names the generation. Maturity labels name the current state of a given edition or version within that generation. `1.0.0-alpha.2` is one specific version that exists within Nautilus today; Alpha describes where it stands, not a step on a published path.
 
 ## Editions and branding
 
-Editions may differ in experience and current maturity.
-
-They do not receive separate branding philosophies, versioning schemes, or release-family names.
+Editions may differ in experience and current maturity. They do not receive separate branding philosophies, versioning schemes, or release-family names.
 
 Standard, Lite, and Mobile are editions of Amonite under the same identity.
 

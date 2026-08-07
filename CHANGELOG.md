@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 Release family: **Nautilus** (Amonite 1.x).
 
-Nautilus names the complete 1.x generation. Maturity labels describe the current state of a release; they are not a required sequence. See [branding.md](branding.md).
+Nautilus names the complete 1.x generation. Maturity labels describe the current state of a release; they are not a required sequence. See [BRANDING.md](BRANDING.md).
 
 ## [v1.0.0-alpha.2] - 2026-07-28
 
