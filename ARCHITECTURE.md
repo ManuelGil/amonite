@@ -1,123 +1,138 @@
-# Amonite Architecture
+# Architecture
 
 <!--
 SPDX-FileCopyrightText: 2026 Manuel Gil
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-Amonite builds upon Debian rather than replacing it.
+Amonite builds upon Debian rather than replacing it. There is exactly one Amonite architecture.
 
-The project intentionally limits the number of engineering decisions it owns
-while relying on the platform whenever appropriate. This architecture makes
-those decisions understandable, maintainable and replaceable throughout the
-project's lifetime.
+Every edition inherits it. Editions differ in intended experience and current implementation. They do not redefine architectural principles.
 
 > **Every default is an intentional decision.**
 
-## Architecture Goals
+## Architecture goals
 
 Every architectural decision should reinforce one or more of the following goals.
 
 ### Simplicity
 
-Prefer solutions that remain understandable by both users and maintainers.
-
-Complexity should never become a feature.
+Prefer solutions that remain understandable by both users and maintainers. Complexity should never become a feature.
 
 ### Modularity
 
-Keep engineering decisions loosely coupled whenever practical.
-
-Users should remain free to replace individual components without affecting unrelated parts of the system.
+Keep engineering decisions loosely coupled whenever practical. Users should remain free to replace individual components without affecting unrelated parts of the system.
 
 ### Maintainability
 
-Engineering decisions introduce long-term responsibility.
-
-The architecture therefore seeks to minimize future maintenance while preserving flexibility.
+Engineering decisions introduce long-term responsibility. The architecture minimizes future maintenance while preserving flexibility.
 
 ### Transparency
 
-System behaviour should primarily be expressed through explicit packages and configuration rather than hidden automation.
+System behaviour should primarily be expressed through explicit packages and configuration rather than hidden automation. Trust begins with understanding.
 
-Trust begins with understanding.
-
-### Platform Integration
+### Platform integration
 
 Whenever Debian already provides a mature capability, the platform should normally be preferred over project-specific implementations.
 
-## Engineering Decisions
+## Documentation layers
 
-An engineering decision is any capability whose long-term evolution becomes
-Amonite's responsibility rather than the responsibility of the underlying
-platform.
+Keep these layers separate.
 
-Engineering decisions define the default system.
+| Layer          | Describes                                         | Stability          |
+| -------------- | ------------------------------------------------- | ------------------ |
+| Product        | Identity, philosophy, editions, audience          | Stable             |
+| Architecture   | Principles, integration model, decision hierarchy | Rarely changes     |
+| Engineering    | Owned decisions and repository practices          | Evolves carefully  |
+| Implementation | Concrete technologies in a given build            | Changes frequently |
 
-They do not prevent users from modifying, replacing or removing individual components.
+Implementation must never redefine the product or the architecture.
 
-The objective is not to maximize customization.
+## Levels of decision
 
-The objective is to provide a coherent default system.
+### Architectural decisions
 
-## Protected Decisions
+Stable rules for how Amonite relates to Debian and how defaults are chosen.
+
+Examples:
+
+- build upon Debian rather than replacing it;
+- prefer platform capabilities before project-specific infrastructure;
+- keep lifecycles separate: build, installation, and installed system;
+- protect a small set of foundational product capabilities.
+
+Architectural decisions should rarely change.
+
+### Engineering decisions
+
+Choices the project owns because they define the default system for a sustained period.
+
+Examples:
+
+- local language model inference as a default capability;
+- a curated command-line environment;
+- a desktop experience appropriate to the edition;
+- a guided Welcome experience where the published product includes it.
+
+Engineering decisions protect outcomes. Their implementations may change.
+
+### Current implementation
+
+The concrete technologies used in a given build or release.
+
+Examples include specific desktop environments, compositors, audio stacks, installers, and individual packages.
+
+Current implementation may change without rewriting product or architecture documentation.
+
+## Protected decisions
 
 Not every engineering decision has the same level of permanence.
 
-Amonite distinguishes between three categories.
-
-### Foundational Decisions
+### Foundational decisions
 
 These decisions define permanent capabilities whose implementations are intentionally protected by the project.
 
 Current foundational decisions include:
 
-- Python as the default automation and integration runtime.
-- Local language model inference through `llama.cpp`.
-
-These technologies form part of the default system's identity.
+- a default automation and integration runtime;
+- local language model inference.
 
 Changing them requires reconsidering the architectural direction of the project rather than selecting a different implementation.
 
-### Protected Capabilities
+### Protected capabilities
 
 Some engineering decisions protect the capability rather than the implementation.
 
 Current examples include:
 
-- Modern terminal experience.
-- Lightweight desktop environment.
-- Guided Welcome experience.
+- modern terminal experience;
+- desktop experience appropriate to the edition;
+- guided Welcome experience where applicable;
+- modern command-line environment.
 
 Implementations may evolve whenever they provide measurable improvements while remaining consistent with the project principles.
 
-### Evolutionary Decisions
+### Evolutionary decisions
 
 Some parts of the system intentionally evolve together with the platform.
 
-Examples include:
+Examples include supporting applications and non-foundational desktop components.
 
-- command-line utilities;
-- supporting applications;
-- desktop components that are not considered foundational.
+The goal is to preserve capabilities rather than individual packages.
 
-These decisions are continuously re-evaluated as Debian evolves.
-
-The objective is to preserve capabilities rather than individual packages.
-
-## Integration Model
+## Integration model
 
 Every engineering decision follows the same conceptual integration model.
 
 ```text
 Engineering Decision
-        ↓
+        |
 Capability
-        ↓
+        |
 Implementation
-        ↓
+        |
 Configuration
-        ↓
+        |
 Installed System
 ```
 
@@ -129,6 +144,20 @@ Whenever possible:
 
 Project-specific logic should exist only when the platform cannot reasonably express the required capability.
 
+## Editions and architecture
+
+Editions share this architecture completely.
+
+| Edition  | Intended experience              | Maturity            |
+| -------- | -------------------------------- | ------------------- |
+| Standard | Complete general-purpose desktop | Alpha 2 (published) |
+| Lite     | Lightweight desktop              | Alpha (published)   |
+| Mobile   | Mobile computing direction       | Experimental        |
+
+Product positioning: [EDITIONS.md](EDITIONS.md).
+
+Naming and release family: [branding.md](branding.md).
+
 ## Lifecycles
 
 Amonite distinguishes three independent lifecycles.
@@ -137,15 +166,40 @@ Amonite distinguishes three independent lifecycles.
 | ---------------- | ------------------------------------------- |
 | Build            | Produce installation artifacts.             |
 | Installation     | Deploy the operating system.                |
-| Installed System | Provide permanent capabilities to the user. |
+| Installed system | Provide permanent capabilities to the user. |
 
 Responsibilities belonging to one lifecycle should never leak into another.
 
 Temporary installation behaviour should not become permanent system behaviour unless it continues providing value after installation.
 
-## Decision Process
+## Runtime behaviour
 
-Every engineering change should answer the following questions.
+The installed system is intended to remain close to Debian:
+
+- software updates use standard Debian package management;
+- security mechanisms prefer mature platform capabilities;
+- desktop and terminal defaults are expressed through packages and configuration;
+- local AI is available as an integrated capability without requiring external services.
+
+Amonite avoids introducing additional background services, custom startup logic, or unnecessary integration layers when declarative configuration is sufficient.
+
+## Distribution philosophy
+
+Official published releases are distributed as signed ISO images with checksums and machine-readable metadata (`release.json`).
+
+Users should be able to:
+
+1. download a published release;
+2. verify authenticity and integrity independently;
+3. boot a live session without modifying installed disks;
+4. install with the graphical installer;
+5. replace defaults after installation without fighting the system.
+
+Verification: [VERIFY.md](VERIFY.md). Installation: [INSTALL.md](INSTALL.md).
+
+## Decision process
+
+Every engineering change should answer these questions.
 
 1. Does it reinforce an existing engineering decision?
 2. Can Debian already provide the required capability?
@@ -156,28 +210,16 @@ Every engineering change should answer the following questions.
 
 Changes that cannot satisfy these questions should normally not become part of Amonite.
 
-## Continuous Evolution
+## Continuous evolution
 
-Technology evolves.
+Technology evolves, Debian evolves, and Amonite evolves with them. Engineering decisions are periodically re-evaluated as better solutions become available.
 
-Debian evolves.
-
-Amonite evolves with them.
-
-Engineering decisions are periodically re-evaluated as better solutions become available.
-
-The project protects capabilities rather than unnecessary implementation details while preserving the small set of foundational decisions that define the identity of the distribution.
-
-Continuous improvement should never compromise simplicity, maintainability or platform integration.
+The project protects capabilities rather than unnecessary implementation details, while preserving the small set of foundational decisions that define the identity of the distribution. Continuous improvement should never compromise simplicity, maintainability, or platform integration.
 
 ## Relationship with Debian
 
-Debian provides the operating system platform.
+Debian provides the operating system platform. Amonite provides carefully selected engineering decisions on top of that platform.
 
-Amonite provides carefully selected engineering decisions on top of that platform.
-
-The project intentionally minimizes divergence from Debian and avoids introducing project-specific infrastructure unless it provides clear and lasting value.
-
-Rather than replacing the platform, Amonite seeks to refine the default system through deliberate engineering decisions.
+The project minimizes divergence from Debian and avoids project-specific infrastructure unless it provides clear and lasting value. Amonite refines the default system through deliberate engineering decisions. It does not replace the platform.
 
 > **Every default is an intentional decision.**

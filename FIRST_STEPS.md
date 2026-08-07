@@ -5,89 +5,128 @@ SPDX-FileCopyrightText: 2026 Manuel Gil
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-## Getting Started with Amonite
+This guide covers the first steps after installing a published Amonite Alpha edition (Standard or Lite).
 
-This guide introduces the first steps after installing the Amonite GNU/Linux
-distribution.
+Current public editions are alpha within the Nautilus (1.x) release family. Expect ongoing polish and report friction early.
 
-> **Note**
->
-> This guide applies to all official Amonite editions unless stated otherwise.
+## Before you begin
 
-## Before You Begin
+Confirm that:
 
-Before continuing, ensure that:
-
-- the installation completed successfully;
+- installation completed successfully;
 - the system boots normally;
-- you can sign in using the account created during installation;
-- the computer is connected to the Internet, if available.
+- you can sign in with the account created during installation;
+- the computer is connected to the network, if available.
+
+If installation is not finished yet, see [INSTALL.md](INSTALL.md).
 
 ## Welcome
 
-Depending on the installed edition, Amonite may present a Welcome application
-during the first login.
+Depending on the installed edition, Amonite may present a Welcome application during the first login.
 
-The Welcome application provides quick access to documentation, common tasks
-and other resources intended to help you become familiar with the system.
+The Welcome handbook is an introduction, not a control panel. It provides:
 
-## Updating the System
+- a short explanation of what Amonite is;
+- who it is for;
+- why the default system stays minimal;
+- quick access to documentation and common first tasks.
 
-After the first login, it is recommended to install the latest available
-software updates.
+Use it to orient yourself, then explore the desktop.
 
-Keeping the system up to date improves stability, compatibility and security.
+## Your System
 
-Amonite uses the standard Debian package management system for software
-updates.
+The default experience may include a **Your System** view that reports the installation in plain terms, such as:
 
-## Installing Software
+- distribution and edition;
+- Debian version;
+- desktop and session;
+- kernel;
+- hardware summary.
 
-Additional software can be installed using the standard package management
-tools provided by the system.
+This is a practical status view of what is actually running.
 
-Refer to the official documentation before enabling additional software
-sources.
+## Updating the system
 
-## Additional Configuration
+After the first login, install the latest available updates.
+
+Amonite uses the standard Debian package management system.
+
+```bash
+sudo apt update
+sudo apt upgrade
+```
+
+Keeping the system up to date improves stability, compatibility, and security.
+
+## Installing software
+
+Install additional software with the standard package management tools:
+
+```bash
+sudo apt install package-name
+```
+
+Refer to Debian and Amonite documentation before enabling additional software sources.
+
+Prefer trusted repositories. Unofficial sources increase maintenance and security risk.
+
+## Desktop orientation
+
+### Standard
+
+Standard is the reference Amonite desktop: a complete general-purpose desktop experience.
+
+### Lite
+
+Lite is a lightweight Amonite desktop: the same product identity with a reduced graphical footprint.
+
+Mobile is experimental and is not covered here as an installable product. See [EDITIONS.md](EDITIONS.md).
+
+## Local artificial intelligence
+
+Published Alpha editions include local AI inference as a deliberate product capability.
+
+Models can run offline under your control. Local applications can use an API-compatible interface without depending on external inference services.
+
+See [CAPABILITIES.md](CAPABILITIES.md).
+
+## Configuration
 
 After installation you may wish to:
 
 - configure printers and other peripherals;
-- connect online accounts;
+- connect online accounts, if desired;
 - customize the desktop environment;
 - configure backups;
-- enable additional accessibility features.
+- enable additional accessibility features;
+- replace any default component that does not fit your workflow.
 
-The available configuration options may vary depending on the installed
-edition.
+Available options may vary by edition. Defaults are intentional starting points, not permanent constraints.
 
-## Getting Help
+## Security recommendations
 
-If you need assistance, consult the available documentation first.
+- Install software updates regularly.
+- Install software only from trusted software sources.
+- Verify downloaded release images whenever possible - [VERIFY.md](VERIFY.md).
+- Keep regular backups of important data.
+- Prefer encrypted installation when the machine stores sensitive data.
 
-Useful resources include:
+## Help
 
-- the official documentation;
-- the changelog;
-- the official community on [r/Amonite](https://reddit.com/r/amonite).
+Useful resources:
 
-The official Amonite community is hosted on Reddit. Questions, bug reports,
-feature ideas and general discussion are welcome in **r/Amonite**.
+- this repository's documentation map in [README.md](README.md);
+- [CHANGELOG.md](CHANGELOG.md) and release notes on GitHub;
+- [r/Amonite](https://www.reddit.com/r/amonite/) for questions, bug reports, and discussion;
+- [amonite.org](https://amonite.org/) for product pages and the gallery.
 
-## Security Recommendations
+When reporting a problem, include the edition, version, hardware or virtualization platform, and the step that failed.
 
-To help keep your system secure:
+## Related documentation
 
-- install software updates regularly;
-- install software only from trusted software sources;
-- verify downloaded files whenever possible;
-- keep regular backups of important data.
-
-## Related Documentation
-
-The following documents complement this guide:
-
-- `INSTALL.md` — Installing the Amonite GNU/Linux distribution.
-- `VERIFY.md` — Verifying downloaded installation images.
-- [`CHANGELOG.md`](CHANGELOG.md) — Public release history.
+- [INSTALL.md](INSTALL.md) - Installing Amonite
+- [VERIFY.md](VERIFY.md) - Verifying downloaded installation images
+- [EDITIONS.md](EDITIONS.md) - Edition identity and maturity
+- [CAPABILITIES.md](CAPABILITIES.md) - Product-defining capabilities
+- [branding.md](branding.md) - Nautilus release family
+- [CHANGELOG.md](CHANGELOG.md) - Public release history

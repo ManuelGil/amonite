@@ -5,53 +5,105 @@ SPDX-FileCopyrightText: 2026 Manuel Gil
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-## Installing Amonite
+This guide explains how to install a published Amonite Alpha release.
 
-This guide explains how to install the Amonite GNU/Linux distribution.
+> **Release family:** Nautilus (Amonite 1.x).
+> **Published editions:** Standard (Alpha 2) and Lite (Alpha).
+> **Mobile:** Experimental - no public installation path.
 
-> **Note**
->
-> This guide applies to all official Amonite editions unless stated otherwise.
+Alpha releases are for evaluation and testing, not production use.
+
+## Download
+
+1. Choose an edition - see [EDITIONS.md](EDITIONS.md).
+2. Download the ISO and verification files from:
+   - [GitHub Releases](https://github.com/ManuelGil/amonite/releases)
+   - [amonite.org/downloads](https://amonite.org/downloads/)
+
+### Current published images
+
+| Edition  | Version         | Image                                                                                                                                                 |
+| -------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Standard | `1.0.0-alpha.2` | [`amonite-1.0.0-alpha.2-amd64.iso`](https://github.com/ManuelGil/amonite/releases/download/v1.0.0-alpha.2/amonite-1.0.0-alpha.2-amd64.iso)            |
+| Lite     | `1.0.0-alpha`   | [`amonite-lite-1.0.0-alpha-amd64.iso`](https://github.com/ManuelGil/amonite/releases/download/lite%2Fv1.0.0-alpha/amonite-lite-1.0.0-alpha-amd64.iso) |
+
+Also download the matching `.iso.asc`, `SHA256SUMS`, and `SHA256SUMS.asc` files from the same release.
+
+3. Verify the download before writing media - [VERIFY.md](VERIFY.md).
+
+Do not install an image that fails verification.
 
 ## Requirements
 
-Before you begin, ensure that you have:
+### Supported platform
 
-- A 64-bit x86 (amd64) computer.
-- At least 4 GB of RAM.
-- At least 20 GB of available storage.
-- A USB flash drive with sufficient capacity for the installation image.
+| Requirement  | Value                |
+| ------------ | -------------------- |
+| Architecture | 64-bit x86 (`amd64`) |
+| Firmware     | BIOS or UEFI         |
+| Installer    | Graphical installer  |
 
-Installing an operating system may modify or erase existing data.
+Amonite currently publishes official images only for `amd64`.
 
-Always back up important files before proceeding.
+### Practical expectations
 
-## Creating the Installation Media
+Installing an operating system may modify or erase existing data. Back up important files before proceeding.
 
-Write the downloaded installation image to a USB flash drive using an image
-writing tool.
+You need:
+
+- a computer that can boot from USB;
+- a USB flash drive large enough for the installation image;
+- enough free storage for a Debian-based desktop system.
+
+### Validated configuration
+
+This configuration was used to validate the current Standard Alpha 2 release within Nautilus. It is a practical reference, not a statement of minimum or recommended production requirements.
+
+| Item                  | Validated value       |
+| --------------------- | --------------------- |
+| Architecture          | `amd64`               |
+| CPU                   | 1 core                |
+| Memory                | 1 GiB RAM             |
+| Storage               | 12 GiB                |
+| Firmware              | BIOS and UEFI         |
+| Virtualization        | QEMU/KVM              |
+| Installed system size | Approximately 2.6 GiB |
+
+Validation covered live ISO boot, graphical desktop, Welcome application, graphical installation, first boot, login, terminal, `apt update`, `apt upgrade`, and zero failed systemd services on that configuration.
+
+For comfortable desktop use, prefer more RAM and storage than the validated minimum reference.
+
+## Creating the installation media
+
+Write the verified ISO to a USB flash drive using an image writing tool.
+
+Examples of suitable tools include `dd`, balenaEtcher, and similar utilities that write raw disk images.
 
 > **Warning**
 >
-> Writing the installation image erases all existing data on the USB flash
-> drive.
+> Writing the installation image erases all existing data on the USB flash drive.
 
-## Booting the Installer
+Example using `dd` (replace the device path with your USB device):
 
-Insert the USB flash drive and boot the computer from the installation media.
+```bash
+sudo dd if=amonite-1.0.0-alpha.2-amd64.iso of=/dev/sdX bs=4M status=progress oflag=sync
+```
 
-Depending on your hardware, you may need to select the USB device from the
-firmware boot menu.
+Identify the correct device before running the command. Writing to the wrong device can destroy data.
 
-If your hardware requires additional firmware configuration, consult the
-manufacturer's documentation before proceeding.
+## Booting the live environment
 
-Once the live environment has started, launch the installer if it does not
-start automatically.
+1. Insert the USB flash drive.
+2. Boot the computer from the installation media.
+3. Select the USB device from the firmware boot menu if the machine does not boot from it automatically.
 
-## Installation Process
+If firmware settings need adjustment (boot order, Secure Boot policy, or legacy/UEFI mode), consult the hardware manufacturer's documentation.
 
-The installer guides you through the installation process.
+Once the live environment has started, you can evaluate Amonite without changing installed disks. The live session runs from the USB drive until you confirm installation partitioning.
+
+Launch the installer if it does not start automatically.
+
+## Installation process
 
 Typical steps include:
 
@@ -63,74 +115,66 @@ Typical steps include:
 6. Reviewing the installation summary.
 7. Installing the operating system.
 
-The exact sequence may vary slightly between releases while preserving the
-overall installation workflow.
+The exact sequence may vary slightly between releases while preserving the overall workflow.
 
 ## Partitioning
 
-Amonite supports both automatic and manual partitioning.
+Amonite supports automatic and manual partitioning.
 
-### Automatic Partitioning
+### Automatic partitioning
 
 Automatic partitioning is recommended for most users.
 
 The installer creates the required partitions automatically.
 
-### Manual Partitioning
+### Manual partitioning
 
-Advanced users may manually configure storage according to their
-requirements.
+Advanced users may configure storage manually.
 
-You can preserve existing GNU/Linux installations and dual-boot configurations,
-and use custom storage layouts, when they are configured correctly.
+You can preserve existing GNU/Linux installations, dual-boot configurations, and custom storage layouts when they are configured correctly.
 
-## Installation
+### Encrypted installation
 
-After confirming the installation summary, the installer copies the operating
-system to the selected storage device.
+Encrypted layouts are supported through the graphical installer when required.
+
+Encryption is an installer option, not a separate project-specific workflow.
+
+## Completing installation
+
+After confirming the installation summary, the installer copies the operating system to the selected storage device.
 
 Depending on your hardware, this process may take several minutes.
 
 Do not interrupt the installation once it has started.
 
-## First Boot
+## First boot
 
-When the installation completes:
+When installation completes:
 
 1. Restart the computer.
-2. Remove the installation media if requested.
+2. Remove the installation media when requested.
 3. Boot into the installed system.
-4. Sign in using the user account created during installation.
+4. Sign in with the user account created during installation.
 
-Depending on the selected edition, Amonite may present a Welcome application
-during the first login.
+Depending on the selected edition, Amonite may present the Welcome application during the first login.
+
+Continue with [FIRST_STEPS.md](FIRST_STEPS.md).
 
 ## Troubleshooting
 
-If the installer cannot start or the installation fails:
+If the installer cannot start or installation fails:
 
-- recreate the installation media;
-- confirm that the target hardware satisfies the minimum requirements;
-- review the changelog for release-specific information.
+- recreate the installation media from a freshly verified ISO;
+- confirm that the target hardware is `amd64` and can boot the live image;
+- try both UEFI and BIOS boot modes if your firmware supports them;
+- review [CHANGELOG.md](CHANGELOG.md) and the release notes for release-specific information.
 
-If the problem persists, share it in the official community on
-[r/Amonite](https://reddit.com/r/amonite).
+If the problem persists, share details in [r/Amonite](https://www.reddit.com/r/amonite/).
 
-## Supported Platforms
+## Related documentation
 
-Amonite currently supports modern 64-bit x86 (amd64) systems.
-
-## Editions
-
-All official Amonite editions follow the same installation workflow.
-
-Differences between editions affect the installed software and capabilities
-rather than the installation process itself.
-
-## Related Documentation
-
-The following documents complement this guide:
-
-- `VERIFY.md` — Verify downloaded installation images.
-- `FIRST_STEPS.md` — Getting started after installation.
-- [`CHANGELOG.md`](CHANGELOG.md) — Public release history.
+- [VERIFY.md](VERIFY.md) - Verifying downloaded installation images
+- [EDITIONS.md](EDITIONS.md) - Edition identity and maturity
+- [FIRST_STEPS.md](FIRST_STEPS.md) - Getting started after installation
+- [CHANGELOG.md](CHANGELOG.md) - Public release history
+- [branding.md](branding.md) - Nautilus release family
